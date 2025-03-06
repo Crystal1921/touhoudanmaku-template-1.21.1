@@ -42,6 +42,7 @@ public class WanderingSoulButterfly extends ActualSpellCard {
             }
             if (tick % CARD_TIME == 30) {
                 releasePinkButterfly(holder, dist);
+                releaseLaser(holder, dist);
             }
 
             if (tick % CARD_TIME == 40) {
@@ -98,6 +99,18 @@ public class WanderingSoulButterfly extends ActualSpellCard {
 
             var e = holder.prepareDanmaku(DANMAKU_LIFE, startVec, bullet, dyeColor);
             e.mover = new DelayAccelerateRoundMover(initSpeed, delay, accelerate, roundSpeed);
+            holder.shoot(e);
+        }
+    }
+
+    private void releaseLaser(CardHolder holder, double dist) {
+        double speed = Math.max(0.6, dist / 40);
+        int n = 24;
+        var o0 = DanmakuHelper.getOrientation(new Vec3(1, 0, 0));
+        for (int i = 0; i < n; i++) {
+            var startVec = o0.rotateDegrees(360d / n * i + 7.5).scale(speed);
+
+            var e = holder.prepareLaser(DANMAKU_LIFE / 3,holder.center(), startVec, 30, DanmakuItems.Laser.LASER, DyeColor.PURPLE);
             holder.shoot(e);
         }
     }

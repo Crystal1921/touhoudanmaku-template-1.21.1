@@ -1,22 +1,17 @@
 package com.crystal.touhou_little_maid;
 
-import com.crystal.spell_card.AncestorDream;
 import com.crystal.spell_card.WanderingSoulButterfly;
 import com.github.tartaricacid.touhoulittlemaid.entity.ai.brain.task.MaidCheckRateTask;
 import com.github.tartaricacid.touhoulittlemaid.entity.passive.EntityMaid;
 import com.github.tartaricacid.touhoulittlemaid.init.InitEntities;
 import com.google.common.collect.ImmutableMap;
-import dev.xkmc.danmakuapi.content.spell.item.SpellContainer;
 import dev.xkmc.danmakuapi.content.spell.spellcard.CardHolder;
-import dev.xkmc.danmakuapi.init.DanmakuAPI;
-import dev.xkmc.l2core.capability.conditionals.TokenKey;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.ai.memory.MemoryModuleType;
 import net.minecraft.world.entity.ai.memory.MemoryStatus;
 import org.jetbrains.annotations.NotNull;
 
-public class DanmakuTask extends MaidCheckRateTask{
-    private static final TokenKey<SpellContainer> SPELL = TokenKey.of(DanmakuAPI.loc("spellcards"));
+public class DanmakuTask extends MaidCheckRateTask {
     float speed;
     int closeEnoughDist;
     WanderingSoulButterfly dream = new WanderingSoulButterfly();
